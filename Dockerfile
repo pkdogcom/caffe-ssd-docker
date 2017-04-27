@@ -33,6 +33,7 @@ ENV CLONE_TAG=1.0
 
 # Use the Forked version of caffe which includes SSD and some fixes. Feel free to replace it with the standard Caffe
 RUN git clone https://github.com/pkdogcom/caffe.git . && \
+    git checkout ssd && \ 
     pip install --upgrade pip && \
     cd python && for req in $(cat requirements.txt) pydot; do pip install $req; done && cd .. && \
     git clone https://github.com/NVIDIA/nccl.git && cd nccl && make -j install && cd .. && rm -rf nccl && \
